@@ -4,6 +4,9 @@
 const int txPin = 9;
 const int rxPin = 8;
 
+// Pins to write to
+const int ledPin = 13;
+
 // Read value from Bluetooth
 int bluetoothValue;
 
@@ -19,7 +22,10 @@ void setup() {
   // Define baud rate for the bluetooth connection
   bluetoothSerial.begin(9600);
 
+  pinMode(ledPin, OUTPUT);
+
 }
+
 
 void loop() {
 
@@ -28,6 +34,13 @@ void loop() {
 
   // Print the Bluetooth value
   Serial.println(bluetoothValue);
+ 
+  if (bluetoothValue == 97) {
+    digitalWrite(ledPin, HIGH);
+  }
+  else {
+    digitalWrite(ledPin, LOW);
+  }
 
   delay(500);
 }
