@@ -4,6 +4,8 @@
 const int txPin = 9;
 const int rxPin = 8;
 
+// Read value from Bluetooth
+int bluetoothValue;
 
 // Define the bluetooth serial
 // (For connecting to the HC-05)
@@ -21,7 +23,11 @@ void setup() {
 
 void loop() {
 
-  Serial.println( bluetoothSerial.read() );
+  // Read from the BLuetooth module
+  bluetoothValue = bluetoothSerial.read();
+
+  // Print the Bluetooth value
+  Serial.println(bluetoothValue);
 
   delay(500);
 }
