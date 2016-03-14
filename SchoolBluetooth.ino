@@ -12,7 +12,7 @@ const int redLed    = 13;
 // Values for the leds
 const int greenValue  = 97; // = a
 const int yellowValue = 98; // = b 
-const int greenLed    = 99; // = c
+const int redValue    = 99; // = c
 
 // Read value from Bluetooth
 int bluetoothValue;
@@ -42,7 +42,8 @@ void loop() {
 
   // Print the Bluetooth value
   Serial.println(bluetoothValue);
- 
+
+  // The LEDs
   toggleLed(97, greenLed);
 
   // This is to make sure that the toggle isn't repeated
@@ -59,7 +60,7 @@ void loop() {
 */
 void toggleLed(int ledValue, int ledPin){
   if (bluetoothValue == ledValue && bluetoothValue != previousBluetoothValue){
-      digitalWrite(ledPin, !digitalRead(ledPin);
+      digitalWrite(ledPin, !digitalRead(ledPin));
       delay(500);
   }
 }
