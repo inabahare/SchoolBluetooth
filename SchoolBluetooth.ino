@@ -43,7 +43,7 @@ void loop() {
   // Print the Bluetooth value
   Serial.println(bluetoothValue);
  
-  sendLed(97, greenLed);
+  toggleLed(97, greenLed);
 
   // This is to make sure that the toggle isn't repeated
   previousBluetoothValue = bluetoothValue;
@@ -51,9 +51,15 @@ void loop() {
   delay(100);
 }
 
-void sendLed(int ledValue, int led){
+/* 
+*   Toggles the LED
+*   
+*   Value to toggle the LED with
+*   Pin the LED is connected to
+*/
+void toggleLed(int ledValue, int ledPin){
   if (bluetoothValue == ledValue && bluetoothValue != previousBluetoothValue){
-      digitalWrite(led, !digitalRead(led);
+      digitalWrite(ledPin, !digitalRead(ledPin);
       delay(500);
   }
 }
