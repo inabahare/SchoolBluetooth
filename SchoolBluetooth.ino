@@ -6,7 +6,7 @@ const int rxPin = 5;
 
 // Pins to write to
 const int greenLed  = 11;
-const int yellowLed = 12;
+const int yellowLed = 13;
 const int redLed    = 13;
 
 // Values for the leds
@@ -31,6 +31,8 @@ void setup() {
   bluetoothSerial.begin(9600);
 
   pinMode(greenLed, OUTPUT);
+  pinMode(yellowLed, OUTPUT);
+  pinMode(redLed, OUTPUT);
 
 }
 
@@ -44,7 +46,9 @@ void loop() {
   Serial.println(bluetoothValue);
 
   // The LEDs
-  toggleLed(97, greenLed);
+  toggleLed(greenValue, greenLed);
+  toggleLed(yellowValue, yellowLed);
+  toggleLed(redValue, redLed);
 
   // This is to make sure that the toggle isn't repeated
   previousBluetoothValue = bluetoothValue;
@@ -61,6 +65,5 @@ void loop() {
 void toggleLed(int ledValue, int ledPin){
   if (bluetoothValue == ledValue && bluetoothValue != previousBluetoothValue){
       digitalWrite(ledPin, !digitalRead(ledPin));
-      delay(500);
   }
 }
